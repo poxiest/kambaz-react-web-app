@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Modules from "./Modules";
 import CourseNavigation from "./Navigation";
+import Home from "./Home";
 export default function Courses() {
     return (
         <div id="wd-courses">
@@ -14,7 +15,7 @@ export default function Courses() {
                     <td valign="top">
                         <Routes>
                             <Route path="/" element={<Navigate to="Home" />} />
-                            <Route path="Home" element={<h2>Home</h2>} />
+                            <Route path="Home" element={<Home />}/>
                             <Route path="Modules" element={<Modules />} />
                             <Route path="Assignments" element={<h2>Assignments</h2>} />
                             <Route path="Assignments/:aid" element={<h2>Assignment Editor</h2>} />
