@@ -31,9 +31,27 @@ export default function Modules() {
                 </li>
                 <li className="wd-module">
                     <div className="wd-title">Week 2</div>
+                    <ul className="wd-lessons">
+                        <li className="wd-lesson">
+                            <span className="wd-title">Formatting User Interfaces with HTML</span>
+                            <ul className="wd-content">
+                                <li className="wd-content-item">Learn how to create user interfaces with HTML.</li>
+                                <li className="wd-content-item">Deploy the assignment to Netlify.</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
                 <li className="wd-module">
                     <div className="wd-title">Week 3</div>
+                    <ul className="wd-lessons">
+                        <li className="wd-lesson">
+                            <span className="wd-title">Creating Single Page Applications with React</span>
+                            <ul className="wd-content">
+                                <li className="wd-content-item">Introduction to Javascript and React.</li>
+                                <li className="wd-content-item">Dynamic Styling.</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
