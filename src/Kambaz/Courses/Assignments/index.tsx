@@ -20,14 +20,14 @@ export default function Assignments() {
             className="wd-assignment-link" >
             A2 - CSS + BOOTSTRAP
           </a>
-          <div className="wd-assignment-details"> Multiple Modules | <b>Not available until</b> May 6 at 12:00am | <b>Due</b> May 13 at 8:00pm | 100pts </div>
+          <div className="wd-assignment-details"> Multiple Modules | <b>Not available until</b> May 13 at 12:00am | <b>Due</b> May 22 at 8:00pm | 100pts </div>
         </li>
         <li className="wd-assignment-list-item">
         <a href="#/Kambaz/Courses/1234/Assignments/123"
             className="wd-assignment-link" >
-            A1 - JAVASCRIPT + REACT
+            A3 - JAVASCRIPT + REACT
           </a>
-          <div className="wd-assignment-details"> Multiple Modules | <b>Not available until</b> May 6 at 12:00am | <b>Due</b> May 13 at 8:00pm | 100pts </div>
+          <div className="wd-assignment-details"> Multiple Modules | <b>Not available until</b> May 22 at 12:00am | <b>Due</b> May 30 at 8:00pm | 100pts </div>
         </li>
       </ul>
     </div>
