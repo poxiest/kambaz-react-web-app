@@ -7,6 +7,7 @@ import { Route, Routes, Navigate } from "react-router";
 export default function Labs() {
   return (
     <div>
+      <h1><u>CS5610-01 Spring 2025</u></h1>
       <h1><u>Sri Vishaak Ramesh Babu</u></h1>
       <h1>Labs</h1>
       <TOC />
