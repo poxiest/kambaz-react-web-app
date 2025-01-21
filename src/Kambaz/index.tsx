@@ -1,15 +1,15 @@
 import { Routes, Route, Navigate } from "react-router";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
-import AccountNavigation from "./Account/Navigation";
 import Courses from "./Courses";
+import KambazNavigation from "./Navigation";
 export default function Kambaz() {
   return (
     <div id="wd-kambaz">
       <table>
         <tr>
           <td valign="top">
-            <AccountNavigation />
+            <KambazNavigation />
           </td>
           <td valign="top">
             <Routes>
