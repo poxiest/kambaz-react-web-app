@@ -9,7 +9,7 @@ export default function CourseNavigation() {
     { to: "/Kambaz/Courses/1234/Assignments", id: "wd-course-quizzes-link", label: "Assignments" },
     { to: "/Kambaz/Courses/1234/Quizzes", id: "wd-course-assignments-link", label: "Quizzes" },
     { to: "/Kambaz/Courses/1234/Grades", id: "wd-course-grades-link", label: "Grades" },
-    { to: "/Kambaz/People", id: "wd-course-people-link", label: "People" },
+    { to: "/Kambaz/Courses/1234/People", id: "wd-course-people-link", label: "People" },
   ]
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
@@ -18,8 +18,7 @@ export default function CourseNavigation() {
           key={id} to={to} id={id}
           className={({ isActive }) =>
             isActive ? "list-group-item active border border-0" : "list-group-item text-danger border border-0"}
-          style={{ fontSize: "1rem", fontWeight: "normal" }} 
-        >
+          style={{ fontSize: "1rem", fontWeight: "normal" }}>
           {label}
         </NavLink>
       ))}
