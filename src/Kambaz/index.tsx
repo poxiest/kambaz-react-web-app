@@ -7,7 +7,7 @@ import "./style.css";
 export default function Kambaz() {
   return (
     <div id="wd-kambaz">
-      <h1 className="wd-main-content-offset p-3"> Kambaz </h1>
+      {/* <h1 className="wd-main-content-offset p-3"> Kambaz </h1> */}
       <KambazNavigation />
       <div className="wd-main-content-offset p-3">
         <Routes>
