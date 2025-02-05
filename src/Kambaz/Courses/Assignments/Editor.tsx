@@ -122,12 +122,13 @@ export default function AssignmentEditor() {
                   <FormLabel className="fs-5">
                     <b>Assign to</b>
                   </FormLabel>
-                  <FormControl
+                  <FormSelect
                     id="wd-assign-to"
-                    type="text"
-                    placeholder="Everyone"
-                  />
-
+                  >
+                    <option selected>Everyone</option>
+                    <option>TA</option>
+                    <option>Students</option>
+                  </FormSelect>
                   <FormLabel className="mt-4">
                     <b>Due</b>
                   </FormLabel>

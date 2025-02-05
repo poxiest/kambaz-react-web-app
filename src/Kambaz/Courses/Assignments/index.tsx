@@ -90,7 +90,7 @@ export default function Assignments() {
                 </a>
                 <p>
                   <span className="text-danger">Multiple Modules</span> |
-                  <b>Not available until</b> May 13 at 12:00am |
+                  <b> Not available until</b> May 13 at 12:00am |
                 </p>
                 <p>
                   <b>Due</b> May 20 at 11:59pm | 100pts
@@ -113,7 +113,7 @@ export default function Assignments() {
                 </a>
                 <p>
                   <span className="text-danger">Multiple Modules</span> |
-                  <b>Not available until</b> May 20 at 12:00am |
+                  <b> Not available until</b> May 20 at 12:00am |
                 </p>
                 <p className="pb-2">
                   <b>Due</b> May 27 at 11:59pm | 100pts
