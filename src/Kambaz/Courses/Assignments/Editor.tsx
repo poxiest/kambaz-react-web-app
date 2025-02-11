@@ -9,38 +9,62 @@ import {
   FormSelect,
   Row,
 } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router";
+import { assignments } from "../../Database";
 import { SlCalender } from "react-icons/sl";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = assignments.find((assignment) => assignment._id === aid);
+  const path = useNavigate();
+
+  const handleButtonClick = () => {
+    path(`/Kambaz/Courses/${cid}/Assignments`);
+  };
+
   return (
     <div id="wd-assignments-editor" className="container mt-4">
       <Form>
         <FormGroup className="mb-4">
           <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
-          <FormControl type="text" id="wd-name" placeholder="A1 - ENV + HTML" />
+          <FormControl
+            type="text"
+            id="wd-name"
+            defaultValue={assignment && assignment.title}
+          />
         </FormGroup>
 
         <FormGroup className="mb-3">
           <FormControl
             as="textarea"
             id="wd-description"
-            placeholder="The assignment is available online Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following."
+            defaultValue={assignment && assignment.description}
           />
         </FormGroup>
 
         <div className="row justify-content-center">
           <div className="col-md-8">
             <FormGroup as={Row} className="mb-3">
-              <FormLabel htmlFor="wd-points" class="col-sm-3 col-form-label text-end">
+              <FormLabel
+                htmlFor="wd-points"
+                class="col-sm-3 col-form-label text-end"
+              >
                 Points
               </FormLabel>
               <Col sm={9}>
-                <FormControl id="wd-points" type="number" placeholder="100" />
+                <FormControl
+                  id="wd-points"
+                  type="number"
+                  defaultValue={assignment && assignment.points}
+                />
               </Col>
             </FormGroup>
 
             <FormGroup as={Row} className="mb-3">
-              <FormLabel class="col-sm-3 col-form-label text-end" htmlFor="wd-group">
+              <FormLabel
+                class="col-sm-3 col-form-label text-end"
+                htmlFor="wd-group"
+              >
                 Assignment Group
               </FormLabel>
               <Col sm={9}>
@@ -51,7 +75,10 @@ export default function AssignmentEditor() {
             </FormGroup>
 
             <FormGroup as={Row} className="mb-3">
-              <FormLabel class="col-sm-3 col-form-label text-end" htmlFor="wd-display-grade-as">
+              <FormLabel
+                class="col-sm-3 col-form-label text-end"
+                htmlFor="wd-display-grade-as"
+              >
                 Display Grade As
               </FormLabel>
               <Col sm={9}>
@@ -66,7 +93,10 @@ export default function AssignmentEditor() {
             </FormGroup>
 
             <FormGroup as={Row} className="mb-3">
-              <FormLabel class="col-sm-3 col-form-label text-end" htmlFor="wd-submission-type">
+              <FormLabel
+                class="col-sm-3 col-form-label text-end"
+                htmlFor="wd-submission-type"
+              >
                 Submission Type
               </FormLabel>
               <Col sm={9}>
@@ -114,7 +144,10 @@ export default function AssignmentEditor() {
             </FormGroup>
 
             <FormGroup className="mb-3 row">
-              <FormLabel class="col-sm-3 col-form-label text-end" htmlFor="wd-assign-to">
+              <FormLabel
+                class="col-sm-3 col-form-label text-end"
+                htmlFor="wd-assign-to"
+              >
                 Assign
               </FormLabel>
               <Col sm={9}>
@@ -122,9 +155,7 @@ export default function AssignmentEditor() {
                   <FormLabel className="fs-5">
                     <b>Assign to</b>
                   </FormLabel>
-                  <FormSelect
-                    id="wd-assign-to"
-                  >
+                  <FormSelect id="wd-assign-to">
                     <option selected>Everyone</option>
                     <option>TA</option>
                     <option>Students</option>
@@ -136,7 +167,9 @@ export default function AssignmentEditor() {
                     <FormControl
                       type="date"
                       id="wd-due-date"
-                      placeholder="2024-01-02"
+                      defaultValue={
+                        assignment && assignment.dueDate.split("T")[0]
+                      }
                     />
                     <span className="input-group-text">
                       <SlCalender />
@@ -152,7 +185,9 @@ export default function AssignmentEditor() {
                         <FormControl
                           type="date"
                           id="wd-available-from"
-                          placeholder="2024-01-02"
+                          defaultValue={
+                            assignment && assignment.availableDate.split("T")[0]
+                          }
                         />
                         <span className="input-group-text">
                           <SlCalender />
@@ -181,10 +216,10 @@ export default function AssignmentEditor() {
 
             <hr />
             <div className="d-flex justify-content-end">
-              <Button variant="secondary" className="me-2">
+              <Button onClick={handleButtonClick} variant="secondary" className="me-2">
                 Cancel
               </Button>
-              <Button variant="danger">Save</Button>
+              <Button onClick={handleButtonClick} variant="danger">Save</Button>
             </div>
           </div>
         </div>
