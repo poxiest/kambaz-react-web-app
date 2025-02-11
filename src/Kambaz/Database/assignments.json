@@ -5,7 +5,7 @@
     "course": "RS101",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-06T00:00",
-    "dueDate": "2025-05-13T11:59",
+    "dueDate": "2025-05-13T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   },
@@ -15,7 +15,7 @@
     "course": "RS101",
     "modules": "Single Module",
     "availableDate": "2025-05-14T00:00",
-    "dueDate": "2025-05-20T11:59",
+    "dueDate": "2025-05-20T23:59",
     "points": "50",
     "description": "In this assignment you have to the following: ....."
   },
@@ -25,7 +25,7 @@
     "course": "RS101",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-21T00:00",
-    "dueDate": "2025-05-28T11:59",
+    "dueDate": "2025-05-28T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   },
@@ -35,7 +35,7 @@
     "course": "RS102",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-06T00:00",
-    "dueDate": "2025-05-13T11:59",
+    "dueDate": "2025-05-13T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   },
@@ -45,7 +45,7 @@
     "course": "RS102",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-14T00:00",
-    "dueDate": "2025-05-20T11:59",
+    "dueDate": "2025-05-20T23:59",
     "points": "50",
     "description": "In this assignment you have to the following: ....."
   },
@@ -55,7 +55,7 @@
     "course": "RS102",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-21T00:00",
-    "dueDate": "2025-05-28T11:59",
+    "dueDate": "2025-05-28T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   },
@@ -65,7 +65,7 @@
     "course": "RS103",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-06T00:00",
-    "dueDate": "2025-05-13T11:59",
+    "dueDate": "2025-05-13T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   },
@@ -75,7 +75,7 @@
     "course": "RS103",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-14T00:00",
-    "dueDate": "2025-05-20T11:59",
+    "dueDate": "2025-05-20T23:59",
     "points": "50",
     "description": "In this assignment you have to the following: ....."
   },
@@ -85,7 +85,7 @@
     "course": "RS103",
     "modules": "Multiple Modules",
     "availableDate": "2025-05-21T00:00",
-    "dueDate": "2025-05-28T11:59",
+    "dueDate": "2025-05-28T23:59",
     "points": "100",
     "description": "In this assignment you have to the following: ....."
   }

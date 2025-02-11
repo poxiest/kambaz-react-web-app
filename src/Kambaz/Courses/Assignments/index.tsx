@@ -11,6 +11,19 @@ import { assignments } from "../../Database";
 export default function Assignments() {
   const { cid } = useParams();
   const assignment = assignments;
+
+  function formatDate(dateStr: string | Date) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  }
+
   return (
     <div id="wd-assignments">
       <div className="d-flex justify-content-between align-items-center flex-wrap">
@@ -74,11 +87,13 @@ export default function Assignments() {
                     </a>
                     <br />
                     <p>
-                      <span className="text-danger">{assignment.modules}</span> |
-                      <b> Not available until</b> {assignment.availableDate.split("T")[0]} at {assignment.availableDate.split("T")[1]} |
+                      <span className="text-danger">{assignment.modules}</span>{" "}
+                      |<b> Not available until</b>{" "}
+                      {formatDate(assignment.availableDate)} |
                     </p>
                     <p>
-                      <b>Due</b> {assignment.dueDate.split("T")[0]} at {assignment.dueDate.split("T")[1]} | {assignment.points} pts
+                      <b>Due</b> {formatDate(assignment.dueDate)} |{" "}
+                      {assignment.points} pts
                     </p>
                   </div>
                   <div className="ms-auto">
