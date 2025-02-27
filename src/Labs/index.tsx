@@ -1,4 +1,6 @@
 import TOC from "./TOC";
+import store from "./store";
+import { Provider } from "react-redux";
 import Lab1 from "./Lab1";
 import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
@@ -7,6 +9,7 @@ import Lab4 from "./Lab4";
 
 export default function Labs() {
   return (
+    <Provider store={store}>
     <div>
       <h1><u>CS5610-01 Spring 2025</u></h1>
       <h1><u>Sri Vishaak Ramesh Babu</u></h1>
@@ -20,4 +23,5 @@ export default function Labs() {
         <Route path="Lab4/*" element={<Lab4 />} />
       </Routes>
     </div>
+    </Provider>
 );}
