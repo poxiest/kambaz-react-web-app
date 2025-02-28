@@ -28,13 +28,13 @@ export default function Kambaz() {
   const addNewCourse = () => {
     const _isd = uuidv4();
     const coursess = {
-      _id : _isd,
+      _id: _isd,
       name: course.name,
       description: course.description,
       img: "/images/reactjs.jpg",
-      "department": "D123",
-      "credits": 3,
-    }
+      department: "D123",
+      credits: 3,
+    };
     setCourses([...courses, coursess]);
     dispatch(
       addEnrollment({
@@ -42,6 +42,10 @@ export default function Kambaz() {
         course: _isd,
       })
     );
+    setCourse({
+      name: "Enter New Course",
+      description: "Enter New Description",
+    });
   };
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
