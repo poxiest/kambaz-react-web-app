@@ -27,7 +27,7 @@ export default function Kambaz() {
 
   const addNewCourse = () => {
     const _isd = uuidv4();
-    setCourses([...courses, { ...course, _id: _isd }]);
+    setCourses([...courses, { ...course, _id: _isd, img: "/images/reactjs.jpg" }]);
     dispatch(
       addEnrollment({
         user: currentUser._id,
