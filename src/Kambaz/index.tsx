@@ -46,7 +46,7 @@ export default function Kambaz() {
       name: "Enter New Course",
       description: "Enter New Description",
     });
-    
+
   };
   const deleteCourse = (courseId: any) => {
     setCourses(courses.filter((course) => course._id !== courseId));
@@ -61,6 +61,10 @@ export default function Kambaz() {
         }
       })
     );
+    setCourse({
+      name: "Enter New Course",
+      description: "Enter New Description",
+    });
   };
 
   return (
