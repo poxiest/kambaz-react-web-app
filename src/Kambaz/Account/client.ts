@@ -54,4 +54,4 @@ export const createCourse = async (course: any) => {
 export const fetchAllUsers = async () => {
   const data = await axiosWithCredentials.get(`${USERS_API}`);
   return data.data;
-}
+};
