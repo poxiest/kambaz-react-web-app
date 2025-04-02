@@ -2,6 +2,7 @@ import { Nav } from "react-bootstrap";
 import { useLocation } from "react-router";
 // import { Link } from "react-router-dom";
 
+
 export default function TOC() {
     const { pathname } = useLocation();
     return (
@@ -39,6 +40,5 @@ export default function TOC() {
                 <Nav.Link href="https://github.com/poxiest/kambaz-react-web-app">My GitHub</Nav.Link>
             </Nav.Item>
         </Nav>
-
     );
 }
