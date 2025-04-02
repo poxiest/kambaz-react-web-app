@@ -3,7 +3,7 @@
 import { Button, Form, FormGroup, FormSelect } from "react-bootstrap";
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
-
+import * as client from "./client";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
@@ -13,11 +13,18 @@ export default function Profile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+  const updateProfile = async () => {
+    const updatedProfile = await client.updateUser(profile);
+    dispatch(setCurrentUser(updatedProfile));
+  };
+
   const fetchProfile = () => {
     if (!currentUser) return navigate("/Kambaz/Account/Signin");
     setProfile(currentUser);
   };
-  const signout = () => {
+  const signout = async () => {
+    await client.signout();
     dispatch(setCurrentUser(null));
     navigate("/Kambaz/Account/Signin");
   };
@@ -86,15 +93,31 @@ export default function Profile() {
             className="mb-2"
             onChange={(e) => setProfile({ ...profile, email: e.target.value })}
           />
-          <FormSelect id="wd-role" className="mb-2"
-          value={profile.role}
-          onChange={(e) => setProfile({ ...profile, role:  e.target.value })}>
-            <option value="USER" selected>User</option>
+          <FormSelect
+            id="wd-role"
+            className="mb-2"
+            value={profile.role}
+            onChange={(e) => setProfile({ ...profile, role: e.target.value })}
+          >
+            <option value="USER" selected>
+              User
+            </option>
             <option value="ADMIN">Admin</option>
             <option value="FACULTY">Faculty</option>
             <option value="STUDENT">Student</option>
           </FormSelect>
-          <Button onClick={signout} className="btn btn-danger w-100 mb-2" id="wd-signout-btn">
+          <Button
+            onClick={updateProfile}
+            className="btn btn-primary w-100 mb-2"
+          >
+            {" "}
+            Update{" "}
+          </Button>
+          <Button
+            onClick={signout}
+            className="btn btn-danger w-100 mb-2"
+            id="wd-signout-btn"
+          >
             Sign out
           </Button>
         </div>

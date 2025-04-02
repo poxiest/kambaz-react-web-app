@@ -15,6 +15,7 @@ import { SlCalender } from "react-icons/sl";
 
 import { updateAssignment, setAssignment } from "./reducer";
 import { useDispatch, useSelector } from "react-redux";
+import * as assignmentsClient from "./client";
 
 export default function AssignmentEditor() {
   const { cid } = useParams();
@@ -24,7 +25,10 @@ export default function AssignmentEditor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+
   const handleSave = () => {
+    assignmentsClient.updateAssignment(assignment);
       dispatch(
         updateAssignment({
           ...assignment,
@@ -196,7 +200,7 @@ export default function AssignmentEditor() {
                       type="date"
                       id="wd-due-date"
                       defaultValue={
-                        assignment && assignment.dueDate.split("T")[0]
+                        assignment && assignment.dueDate && assignment.dueDate.split("T")[0]
                       }
                       onChange={(e) =>
                         dispatch(
@@ -219,7 +223,7 @@ export default function AssignmentEditor() {
                           type="date"
                           id="wd-available-from"
                           defaultValue={
-                            assignment && assignment.availableDate.split("T")[0]
+                            assignment && assignment.availableDate && assignment.availableDate.split("T")[0]
                           }
                           onChange={(e) =>
                             dispatch(
@@ -253,6 +257,7 @@ export default function AssignmentEditor() {
             </FormGroup>
 
             <hr />
+            {currentUser.role === "FACULTY" && (
             <div className="d-flex justify-content-end">
               <Button
                 onClick={handleButtonClick}
@@ -264,7 +269,7 @@ export default function AssignmentEditor() {
               <Button onClick={handleSave} variant="danger">
                 Save
               </Button>
-            </div>
+            </div>)}
           </div>
         </div>
       </Form>
