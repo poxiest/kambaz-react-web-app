@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";

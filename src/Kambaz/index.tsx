@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Routes, Route, Navigate } from "react-router";
 import Account from "./Account";
@@ -60,7 +59,7 @@ export default function Kambaz() {
   };
 
   const deleteCourse = async (courseId: any) => {
-    const status = await courseClient.deleteCourse(courseId);
+    await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
