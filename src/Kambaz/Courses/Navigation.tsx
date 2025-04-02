@@ -1,18 +1,57 @@
-import { Link } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 export default function CourseNavigation() {
-    return (
-        <div id="wd-courses-navigation">
-            <Link to="/Kambaz/Courses/1234/Home" id="wd-course-home-link">Home</Link><br />
-            <Link to="/Kambaz/Courses/1234/Modules" id="wd-course-modules-link">Modules
-            </Link><br />
-            <Link to="/Kambaz/Courses/1234/Piazza" id="wd-course-piazza-link">Piazza</Link><br />
-            <Link to="/Kambaz/Courses/1234/Zoom" id="wd-course-zoom-link">Zoom</Link><br />
-            <Link to="/Kambaz/Courses/1234/Assignments" id="wd-course-quizzes-link">
-                Assignments</Link><br />
-            <Link to="/Kambaz/Courses/1234/Quizzes" id="wd-course-assignments-link">Quizzes
-            </Link><br />
-            <Link to="/Kambaz/Courses/1234/Grades" id="wd-course-grades-link">Grades</Link><br />
-            <Link to="/Kambaz/People" id="wd-course-people-link">People</Link><br />
-        </div>
-    );
+  const { cid } = useParams();
+  const links = [
+    {
+      id: "wd-course-home-link",
+      label: "Home",
+    },
+    {
+      id: "wd-course-modules-link",
+      label: "Modules",
+    },
+    {
+      id: "wd-course-piazza-link",
+      label: "Piazza",
+    },
+    {
+      id: "wd-course-zoom-link",
+      label: "Zoom",
+    },
+    {
+      id: "wd-course-quizzes-link",
+      label: "Assignments",
+    },
+    {
+      id: "wd-course-assignments-link",
+      label: "Quizzes",
+    },
+    {
+      id: "wd-course-grades-link",
+      label: "Grades",
+    },
+    {
+      id: "wd-course-people-link",
+      label: "People",
+    },
+  ];
+  return (
+    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+      {links.map(({ id, label }) => (
+        <NavLink
+          key={id}
+          to={`/Kambaz/Courses/${cid}/${label}`}
+          id={id}
+          className={({ isActive }) =>
+            isActive
+              ? "list-group-item active border border-0"
+              : "list-group-item text-danger border border-0"
+          }
+          style={{ fontSize: "1rem", fontWeight: "normal" }}
+        >
+          {label}
+        </NavLink>
+      ))}
+    </div>
+  );
 }
