@@ -36,7 +36,13 @@ export default function TOC() {
                 <Nav.Link href="#/Kambaz">Kambaz</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="https://github.com/poxiest/kambaz-react-web-app">My GitHub</Nav.Link>
+                <Nav.Link href="https://kambaz-node-server-app-73m2.onrender.com">Backend Website</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="https://github.com/poxiest/kambaz-react-web-app">Client GitHub</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="https://github.com/poxiest/kambaz-node-server-app">Server GitHub</Nav.Link>
             </Nav.Item>
         </Nav>
 
