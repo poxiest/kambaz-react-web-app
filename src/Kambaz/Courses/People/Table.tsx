@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as courseClient from "../../Courses/client";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function PeopleTable() {
   const { cid } = useParams();
@@ -54,7 +55,9 @@ export default function PeopleTable() {
                 </Link>
               </td> */}
               <td className="wd-full-name">
-                {user.firstName}{" "}{user.lastName}{" "}
+                <FaUserCircle className="me-2 fs-1 text-secondary" />
+                <span className="wd-first-name">{user.firstName} </span>
+                <span className="wd-last-name">{user.lastName}</span>
               </td>
               <td className="wd-login-id">{user.loginId}</td>
               <td className="wd-section">{user.section}</td>
