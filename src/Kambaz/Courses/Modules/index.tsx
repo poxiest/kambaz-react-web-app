@@ -36,7 +36,7 @@ export default function Modules() {
   };
   useEffect(() => {
     fetchModules();
-  }, []);
+  }, [cid]);
 
   const createModuleForCourse = async () => {
     if (!cid) return;
@@ -74,7 +74,7 @@ export default function Modules() {
                 <FormControl
                   className="w-50 d-inline-block"
                   onChange={(e) =>
-                    dispatch(updateModule({ ...module, name: e.target.value }))
+                    saveModule({ ...module, name: e.target.value })
                   }
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {

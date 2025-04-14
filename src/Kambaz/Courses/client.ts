@@ -45,3 +45,13 @@ export const createAssignmentForCourse = async (courseId: string, assignment: an
   );
   return response.data;
 }
+
+export const createCourse = async (course: any) => {
+  const { data } = await axiosWithCredentials.post(COURSES_API, course);
+  return data;
+ }; 
+
+export const findUsersForCourse = async (courseId: any) => {
+  const response = await axios.get(`${COURSES_API}/${courseId}/users`);
+  return response.data;
+};

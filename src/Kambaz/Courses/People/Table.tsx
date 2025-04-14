@@ -2,9 +2,41 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import * as courseClient from "../../Courses/client";
 
-export default function PeopleTable({ users = [] }: { users?: any[] }) {
+export default function PeopleTable() {
+
+  const { cid } = useParams();
+  // const { users, enrollments } = db;
+  // console.log(users);
+
+  // const { currentUser } = useSelector((state: any) => state.accountReducer); // Get current user
+
+  const [users, setUsers] = useState<any[]>([]); // State to hold user's courses
+  // const [loading, setLoading] = useState<boolean>(true); // State to track loading status
+
+
+  const findUsersCourse = async () => {
+    try {
+      const userCourses = await courseClient.findUsersForCourse(cid);
+      setUsers(userCourses);
+    } catch (error) {
+      console.error("Error fetching user courses:", error);
+    } 
+    // finally {
+    //   setLoading(false);
+    // }
+  };
+
+  // Fetch user's courses when the component mounts or the user changes
+  useEffect(() => {
+    if (cid) {
+      findUsersCourse();
+    }
+  }, [cid]);
+  
   return (
     <div id="wd-people-table">
       <PeopleDetails />
