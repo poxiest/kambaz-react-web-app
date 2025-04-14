@@ -27,8 +27,8 @@ export default function AssignmentEditor() {
 
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
-  const handleSave = () => {
-    assignmentsClient.updateAssignment(assignment);
+  const handleSave = async () => {
+    await assignmentsClient.updateAssignment(assignment);
       dispatch(
         updateAssignment({
           ...assignment,

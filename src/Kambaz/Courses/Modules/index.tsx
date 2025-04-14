@@ -74,7 +74,7 @@ export default function Modules() {
                 <FormControl
                   className="w-50 d-inline-block"
                   onChange={(e) =>
-                    saveModule({ ...module, name: e.target.value })
+                    dispatch(updateModule({ ...module, name: e.target.value }))
                   }
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
