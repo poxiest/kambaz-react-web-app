@@ -130,8 +130,8 @@ export default function McqQuestion() {
         // Also have to update the quiz question
         dispatch(addQuestion(createdQuestion));
         console.log("New Question Added:", createdQuestion);
-        navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
-        // http://localhost:3000/#/Kanbas/Courses/674f9ae2f84d29eaab2a2398/Quizzes/6754755143a12ed21120b453/Edit
+        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
+        // http://localhost:3000/#/Kambaz/Courses/674f9ae2f84d29eaab2a2398/Quizzes/6754755143a12ed21120b453/Edit
       } else {
         // Update an existing question
         const updatedQuestion = await questionClient.updateQuestions(
@@ -139,7 +139,7 @@ export default function McqQuestion() {
         );
         dispatch(updateQuestion(updatedQuestion));
         console.log("Question Updated:", updatedQuestion);
-        navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
       }
     } catch (error) {
       console.error("Failed to save the question:", error);

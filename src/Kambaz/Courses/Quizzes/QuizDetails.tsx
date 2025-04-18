@@ -48,11 +48,11 @@ export default function QuizDetails({ role = "faculty" }) {
   // );
 
   // const handleEditClick = () => {
-  //   navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+  //   navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
   // };
 
   // const handlePreviewClick = () => {
-  //   navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Preview`);
+  //   navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Preview`);
   // };
 
   // // Show loading or fallback if quiz is not yet loaded
@@ -161,15 +161,15 @@ export default function QuizDetails({ role = "faculty" }) {
   // });
 
   const handleEditClick = () => {
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
   };
 
   const handlePreviewClick = () => {
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Preview`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Preview`);
   };
 
   const handlePreviewAttempt = () => {
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/${userAttempts[0]._id}`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/${userAttempts[0]._id}`);
   };
 
   return (
@@ -405,11 +405,11 @@ export default function QuizDetails({ role = "faculty" }) {
 //   }, [quizId]);
 
 //   const handleEditClick = () => {
-//     navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+//     navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
 //   };
 
 //   const handlePreviewClick = () => {
-//     navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Preview`);
+//     navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Preview`);
 //   };
 
 //   if (loading) {
@@ -556,11 +556,11 @@ export default function QuizDetails({ role = "faculty" }) {
 //   );
 
 //   const handleEditClick = () => {
-//     navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+//     navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
 //   };
 
 //   const handlePreviewClick = () => {
-//     navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Preview`);
+//     navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Preview`);
 //   };
 
 //   // Show loading or fallback if quiz is not yet loaded

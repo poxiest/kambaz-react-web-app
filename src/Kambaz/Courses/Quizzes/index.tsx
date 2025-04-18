@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdArrowDropDown, MdOutlineRocketLaunch } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function Quiz() {
   // console.log(quizzess);
 
   const handleEdit = (quizId: any) => {
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
   };
 
   const handleDelete = async (quizId: string) => {
@@ -78,7 +78,7 @@ export default function Quiz() {
     // console.log(id);
     // const newQuizId = new ObjectId().toString();
     // console.log("Generated Quiz ID:", newQuizId);
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/Edit`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/Edit`);
   };
   console.log(currentUser.role);
   console.log("Printing Quizzes", quizzes);
@@ -151,7 +151,7 @@ export default function Quiz() {
                     <div className="mt-2">
                       <Link
                         className="wd-quiz-link text-black text-decoration-none"
-                        to={`/Kanbas/Courses/${cid}/Quizzes/${quiz._id}`}
+                        to={`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`}
                       >
                         <b className="fs-4">{quiz.name}</b>
                       </Link>

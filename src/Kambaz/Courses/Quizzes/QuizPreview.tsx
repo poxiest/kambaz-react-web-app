@@ -268,14 +268,14 @@ export default function QuizPreview() {
   };
 
   const handleReturn = () => {
-    navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}`);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}`);
   };
 
   // console.log(score);
 
   const handleEditQuiz = () => {
     // navigate(
-    //   `/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/${quesId}`
+    //   `/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/${quesId}`
     // );
     console.log("Editing Quiz");
   };

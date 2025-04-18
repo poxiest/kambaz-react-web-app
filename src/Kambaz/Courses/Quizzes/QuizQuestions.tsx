@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdArrowDropDown } from "react-icons/md";
@@ -47,7 +48,7 @@ const QuizQuestions = () => {
 
   const handleAddClick = () => {
     navigate(
-      `/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/QuestionEditor`
+      `/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/QuestionEditor`
     );
   };
 
@@ -116,7 +117,7 @@ const QuizQuestions = () => {
                 <div className="mt-2">
                   <Link
                     className="wd-assignment-link text-black text-decoration-none d-flex"
-                    to={`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/${question._id}`}
+                    to={`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit/Questions/${question._id}`}
                     // to="#"
                     // onClick={() => handleQuestionClick(question)}
                   >

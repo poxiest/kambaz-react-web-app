@@ -346,8 +346,8 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
       courseClient.createQuizForCourse(cid, newQuiz); // Assuming createAssignment is a function for creating assignments
       // dispatch(addQuiz(newAssignment)); // Assuming addQuiz is the Redux action for adding a new quiz
       console.log("New quiz Created:", newQuiz);
-      navigate(`/Kanbas/Courses/${cid}/Quizzes`);
-      // http://localhost:3000/#/Kanbas/Courses/674f9ae2f84d29eaab2a2398/Quizzes/Edit
+      navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+      // http://localhost:3000/#/Kambaz/Courses/674f9ae2f84d29eaab2a2398/Quizzes/Edit
     }
   };
 
@@ -370,7 +370,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
       points: quizDetails?.points || 15,
       attempts: quizDetails?.attempts || 0,
     });
-    // navigate(`/Kanbas/Courses/${cid}/Assignments`);
+    // navigate(`/Kambaz/Courses/${cid}/Assignments`);
     console.log("Edit Cancelled");
   };
 

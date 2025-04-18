@@ -87,7 +87,7 @@ export default function TrueFalseEditor() {
         );
         dispatch(addQuestion(createdQuestion));
         console.log("New Question Added:", createdQuestion);
-        navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
       } else {
         // Update an existing question
         const updatedQuestion = await questionClient.updateQuestions(
@@ -95,7 +95,7 @@ export default function TrueFalseEditor() {
         );
         dispatch(updateQuestion(updatedQuestion));
         console.log("Question Updated:", updatedQuestion);
-        navigate(`/Kanbas/Courses/${cid}/Quizzes/${quizId}/Edit`);
+        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
       }
     } catch (error) {
       console.error("Failed to save the question:", error);
