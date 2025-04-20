@@ -101,7 +101,7 @@ export default function FillInTheBlankEditor() {
       qtype: "fillIn",
       question: questionText,
       points,
-      answer: answers.map(({ id, text }) => ({ answer: text, isAnswer: true })), // Exclude internal IDs
+      answer: answers.map(({ text }) => ({ answer: text, isAnswer: true })), // Exclude internal IDs
     };
 
     try {
