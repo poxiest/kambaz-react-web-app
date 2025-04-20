@@ -1,0 +1,31 @@
+Varun
+True or false  - can't change the answers from true to false 
+Cancel button not working in questionCreation
+save button not working in quiz details screen (return back to quiz main screen)
+Clicking Save and Publish saves & publishes quiz and navigates to Quiz List screen
+radio buttons not working properly (visual) in quiz as student
+landing page for project
+
+
+Hari 
+empty quiz - if you start, it breaks in the preview page ( as student and faculty)
+delete button for a quiz in quizzes screen
+Under the quiz title display
+Availability
+Closed - if current date is after quizzes until Date
+Available - if current date is between Available Date and Available Until Date
+Not available until <AVAILABLE DATE> - if current date is before the Available Date
+Under the quiz title display 
+
+
+- vishaak 
+Students can take quiz as many times as configured in How Many Attempts property
+Once a student has exhausted the number of attempts, they can not take the quiz again
+change date because he has given Nov as a placeholder
+Can add/remove choices - remove not wokring
+
+
+Number of questions, Score - if the current user is a student, the score from the last attempt is shown
+Access Code - Passcode students need to type to access the quiz. Default is blank - add an input field and store in db
+ 
+All questions in quiz are displayed (one at a time optional) in quiz preview a faculty
