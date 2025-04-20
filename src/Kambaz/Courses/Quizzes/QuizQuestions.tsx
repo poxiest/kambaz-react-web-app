@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MdArrowDropDown } from "react-icons/md";
 import { SlQuestion } from "react-icons/sl";
@@ -8,21 +8,11 @@ import { deleteQuestion } from "./QuestionEditor/reducerQuestion"; // Import the
 import * as quizClient from "./client";
 import { setQuestions } from "./QuestionEditor/reducerQuestion";
 import * as questionClient from "./QuestionEditor/client";
-import McqQuestion from "./QuestionEditor/McqQuestion.tsx";
-import FillInTheBlankEditor from "./QuestionEditor/FillInTheBlankEditor";
 
 const QuizQuestions = () => {
   const { cid, quizId } = useParams(); // Get course and quiz IDs from the route params
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const [selectedQuestion, setSelectedQuestion] = useState<any>(null);
-
-  const handleQuestionClick = (question: any) => {
-    setSelectedQuestion(question);
-  };
-
-  // const
 
   const fetchQuestion = async () => {
     const quiz = await quizClient.findQuestionsForQuiz(quizId as string);

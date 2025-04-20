@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 // import { questions } from "../../Database";
-import { useDispatch, useSelector } from "react-redux";
-import * as questionClient from "./QuestionEditor/client";
+import { useSelector } from "react-redux";
 import * as quizClient from "./client";
-import { setQuestions } from "./QuestionEditor/reducerQuestion";
-import { timeStamp } from "console";
 
 interface Answer {
   questionId: string;
@@ -37,7 +35,6 @@ export default function QuizPreview() {
 
   const { quizzes } = useSelector((state: any) => state.quizReducer);
   const quiz = quizzes.find((q: any) => q._id === quizId);
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer); // Get current user
   const { cid } = useParams();
 
@@ -48,12 +45,12 @@ export default function QuizPreview() {
   const [userAttempts, setUserAttempts] = useState<Attempt[]>([]);
   const [quizQuestions, setQuizQuestions] = useState<any>([{}]);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [time, setTime] = useState("");
+  const [, setTime] = useState("");
   const [score, setScore] = useState(0);
-  const [existingAttempt, setExistingAttempt] = useState<Attempt[]>([]);
   const [disable, setDisable] = useState(false);
   const [back, setBack] = useState(false);
-  const [quesId, setQuesId] = useState();
+  const [, setQuesId] = useState();
+  // eslint-disable-next-line prefer-const
   let [att, setAtt] = useState<number | null>(null);
   useEffect(() => {
     if (quiz) {
@@ -123,10 +120,6 @@ export default function QuizPreview() {
   console.log(quizQuestions);
 
   const [currentIndex, setCurrentIndex] = useState(0); // Track the current question index
-
-  const handleRetest = () => {
-    // set;
-  };
 
   // if (attemptId === undefined) {
   //   setAnswers([]);

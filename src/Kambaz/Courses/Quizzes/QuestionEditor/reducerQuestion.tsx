@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { questions as questionDB } from "../../../Database";
 
 interface Answer {
   answer: string;

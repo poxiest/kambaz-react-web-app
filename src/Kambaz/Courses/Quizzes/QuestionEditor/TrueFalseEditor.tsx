@@ -14,7 +14,7 @@ export default function TrueFalseEditor() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [question, setQuestion] = useState<any>(null);
+  const [, setQuestion] = useState<any>(null);
   const [title, setTitle] = useState("");
   const [questionText, setQuestionText] = useState("");
   const [points, setPoints] = useState(3);
