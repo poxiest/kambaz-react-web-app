@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { MdArrowDropDown, MdOutlineRocketLaunch } from "react-icons/md";
+import { MdArrowDropDown, MdBlock } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 // import { quizzes } from "../../Database";
 import * as quizClient from "./client";
 import * as coursesClient from "../client";
 import { setQuizzes, deleteQuiz, updateQuiz } from "./reducerQuiz";
 import { useDispatch, useSelector } from "react-redux";
+import { FaCheck } from "react-icons/fa";
 // import { ObjectId } from "mongodb";
 
 export default function Quiz() {
@@ -72,6 +73,20 @@ export default function Quiz() {
     // );
   };
 
+  function QuizStatusIcon({ quiz, togglePublish }) {
+    return quiz.published ? (
+      <FaCheck
+        className="ms-3 me-4 mt-4 fs-3 text-success"
+        onClick={() => togglePublish(quiz)}
+      />
+    ) : (
+      <MdBlock
+        className="ms-3 me-4 mt-4 fs-3 text-danger"
+        onClick={() => togglePublish(quiz)}
+      />
+    );
+  }
+
   const openQuizDetails = async () => {
     // const response = await quizClient.getId();
     // const id = response.id;
@@ -125,8 +140,6 @@ export default function Quiz() {
           </div>
           <ul className="wd-lessons list-group rounded-0">
             {
-              // quizzes.length > 0 ? (
-
               quizzes
                 .filter(
                   (quiz: any) =>
@@ -139,14 +152,22 @@ export default function Quiz() {
                     key={quiz._id}
                     className="wd-quiz wd-quiz-list-item list-group-item p-3 ps-1 d-flex align-items-start"
                   >
-                    {/* Publish Icon */}
-                    <MdOutlineRocketLaunch
-                      className={`ms-3 me-4 mt-4 fs-3 ${
-                        quiz.published ? "text-success" : "text-danger"
-                      }`}
-                      onClick={() => togglePublish(quiz)}
-                    />
-
+                    {currentUser.role === "FACULTY" &&
+                      (quiz.published ? (
+                        <FaCheck
+                          className="ms-3 me-4 mt-4 fs-3 text-success"
+                          onClick={() => togglePublish(quiz)}
+                          title="Click to unpublish"
+                          style={{ cursor: "pointer" }}
+                        />
+                      ) : (
+                        <MdBlock
+                          className="ms-3 me-4 mt-4 fs-3 text-danger"
+                          onClick={() => togglePublish(quiz)}
+                          title="Click to publish"
+                          style={{ cursor: "pointer" }}
+                        />
+                      ))}
                     {/* Quiz Details */}
                     <div className="mt-2">
                       <Link

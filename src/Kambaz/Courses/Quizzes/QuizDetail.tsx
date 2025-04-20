@@ -264,8 +264,8 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
     availability: quizDetails?.availability || "Closed",
     type: quizDetails?.type || "Graded Quiz",
     group: quizDetails?.group || "Assignments",
-    shuffled: quizDetails?.shuffled || false,
-    time: quizDetails?.time || "",
+    shuffled: quizDetails?.shuffled || true,
+    time: quizDetails?.time || 20,
     multipleAttempts: quizDetails?.multipleAttempts || false,
     assignTo: quizDetails?.assignTo || "Everyone",
     dueDate: quizDetails?.dueDate || "2024-11-01",
@@ -273,6 +273,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
     untilDate: quizDetails?.untilDate || "2024-12-01",
     points: quizDetails?.points || 15,
     attempts: quizDetails?.attempts || 0,
+    lock: quizDetails?.lock || false,
   });
 
   // Function to determine availability
@@ -369,6 +370,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
       untilDate: quizDetails?.untilDate || "",
       points: quizDetails?.points || 15,
       attempts: quizDetails?.attempts || 0,
+      lock: quizDetails?.lock || false,
     });
     // navigate(`/Kambaz/Courses/${cid}/Assignments`);
     console.log("Edit Cancelled");
@@ -443,7 +445,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
                 value={details.type}
                 onChange={handleInputChange}
               >
-                <option>Graded Quiz</option>
+                <option selected>Graded Quiz</option>
                 <option>Ungraded Survey</option>
                 <option>Graded Survey</option>
                 <option>Practice Quiz</option>
@@ -464,7 +466,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
                 value={details.group}
                 onChange={handleInputChange}
               >
-                <option>Quizzes</option>
+                <option selected>Quizzes</option>
                 <option>Exams</option>
                 <option>Assignments</option>
                 <option>Project</option>
@@ -491,6 +493,19 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
                 />
                 <label className="form-check-label" htmlFor="wd-chkbox-text">
                   Shuffle Answers
+                </label>
+              </div>
+              <div className="form-check mt-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="wd-chkbox-lock"
+                  name="lock"
+                  checked={details.lock}
+                  onChange={handleInputChange}
+                />
+                <label className="form-check-label" htmlFor="wd-chkbox-lock">
+                Lock Questions After Answering 
                 </label>
               </div>
               <div className="form-check mt-3 me-2 col-11 d-flex">

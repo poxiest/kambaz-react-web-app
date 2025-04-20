@@ -338,7 +338,7 @@ export default function QuizDetails() {
             <div className="col-6 d-flex justify-content-end">
               <strong>Lock Questions After Answering:</strong>
             </div>
-            <div className="col-6">No</div>
+            <div className="col-6">{quiz.lock ? "Yes" : "No"}</div>
           </div>
         </div>
       </div>
