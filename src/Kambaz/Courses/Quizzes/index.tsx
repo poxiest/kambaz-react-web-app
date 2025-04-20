@@ -73,20 +73,6 @@ export default function Quiz() {
     // );
   };
 
-  function QuizStatusIcon({ quiz, togglePublish }) {
-    return quiz.published ? (
-      <FaCheck
-        className="ms-3 me-4 mt-4 fs-3 text-success"
-        onClick={() => togglePublish(quiz)}
-      />
-    ) : (
-      <MdBlock
-        className="ms-3 me-4 mt-4 fs-3 text-danger"
-        onClick={() => togglePublish(quiz)}
-      />
-    );
-  }
-
   const openQuizDetails = async () => {
     // const response = await quizClient.getId();
     // const id = response.id;
