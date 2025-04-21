@@ -157,19 +157,23 @@ export default function TrueFalseEditor() {
           {/* True Option */}
           <div
             className={`d-flex align-items-center p-2 mb-2 ${
-              selectedAnswer ? "border border-success rounded" : ""
+              selectedAnswer === "True" ? "border border-success rounded" : ""
             }`}
             style={{ cursor: "pointer" }}
             onClick={() => handleAnswerSelection("True")}
           >
             <div
               className={`me-2 ${
-                selectedAnswer ? "text-success" : "text-muted"
+                selectedAnswer === "True" ? "text-success" : "text-muted"
               }`}
             >
-              {selectedAnswer ? "✓" : "→"}
+              {selectedAnswer === "True" ? "✓" : "→"}
             </div>
-            <span className={`fw-bold ${selectedAnswer ? "text-success" : ""}`}>
+            <span
+              className={`fw-bold ${
+                selectedAnswer === "True" ? "text-success" : ""
+              }`}
+            >
               True
             </span>
           </div>
@@ -177,20 +181,22 @@ export default function TrueFalseEditor() {
           {/* False Option */}
           <div
             className={`d-flex align-items-center p-2 ${
-              !selectedAnswer ? "border border-success rounded" : ""
+              selectedAnswer === "False" ? "border border-success rounded" : ""
             }`}
             style={{ cursor: "pointer" }}
             onClick={() => handleAnswerSelection("False")}
           >
             <div
               className={`me-2 ${
-                !selectedAnswer ? "text-success" : "text-muted"
+                selectedAnswer === "False" ? "text-success" : "text-muted"
               }`}
             >
-              {!selectedAnswer ? "✓" : "→"}
+              {selectedAnswer === "False" ? "✓" : "→"}
             </div>
             <span
-              className={`fw-bold ${!selectedAnswer ? "text-success" : ""}`}
+              className={`fw-bold ${
+                selectedAnswer === "False" ? "text-success" : ""
+              }`}
             >
               False
             </span>

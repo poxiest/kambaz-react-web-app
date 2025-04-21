@@ -259,6 +259,7 @@ export default function QuizPreview() {
     }
 
     setBack(!back);
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}`);
   };
 
   const handleReturn = () => {
@@ -350,15 +351,11 @@ export default function QuizPreview() {
                   id={`option-${index}`}
                   name={`question-${question._id}`}
                   className="form-check-input"
-                  disabled={disable} // Disable inputs
+                  disabled={disable}
                   onChange={() =>
                     handleAnswerChange(question._id, option.answer)
                   }
-                  checked={
-                    attemptId
-                      ? userSelectedAnswer.includes(option.answer)
-                      : false
-                  }
+                  checked={userSelectedAnswer.includes(option.answer)}
                 />
                 <label
                   htmlFor={`option-${index}`}
