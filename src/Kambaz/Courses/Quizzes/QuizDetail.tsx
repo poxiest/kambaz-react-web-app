@@ -239,10 +239,10 @@
 // export default Details;
 
 import React, { useEffect, useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateQuiz } from "./reducerQuiz"; // Import the updateQuiz action
 import { CgShapeHalfCircle } from "react-icons/cg";
-import {updateQuizz } from "./client"; // Client API
+import { updateQuizz } from "./client"; // Client API
 import { useNavigate, useParams } from "react-router";
 import * as courseClient from "../client";
 
@@ -348,33 +348,59 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
       courseClient.createQuizForCourse(cid, newQuiz); // Assuming createAssignment is a function for creating assignments
       // dispatch(addQuiz(newAssignment)); // Assuming addQuiz is the Redux action for adding a new quiz
       console.log("New quiz Created:", newQuiz);
-      navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+
       // http://localhost:3000/#/Kambaz/Courses/674f9ae2f84d29eaab2a2398/Quizzes/Edit
     }
+    navigate(`/Kambaz/Courses/${cid}/Quizzes`);
   };
 
   // Reset local state to cancel changes
   const handleCancel = () => {
-    setDetails({
-      _id: quizDetails._id,
-      name: quizDetails?.name || "",
-      description: quizDetails?.description || "",
-      type: quizDetails?.type || "Graded Quiz",
-      availability: quizDetails?.availability || "Closed",
-      group: quizDetails?.group || "Assignments",
-      shuffled: quizDetails?.shuffled || false,
-      time: quizDetails?.time || "",
-      multipleAttempts: quizDetails?.multipleAttempts || false,
-      assignTo: quizDetails?.assignTo || "Everyone",
-      dueDate: quizDetails?.dueDate || "",
-      availableDate: quizDetails?.availableDate || "",
-      untilDate: quizDetails?.untilDate || "",
-      points: quizDetails?.points || 15,
-      attempts: quizDetails?.attempts || 0,
-      lock: quizDetails?.lock || false,
-    });
-    // navigate(`/Kambaz/Courses/${cid}/Assignments`);
+    // setDetails({
+    //   _id: quizDetails._id,
+    //   name: quizDetails?.name || "",
+    //   description: quizDetails?.description || "",
+    //   type: quizDetails?.type || "Graded Quiz",
+    //   availability: quizDetails?.availability || "Closed",
+    //   group: quizDetails?.group || "Assignments",
+    //   shuffled: quizDetails?.shuffled || false,
+    //   time: quizDetails?.time || "",
+    //   multipleAttempts: quizDetails?.multipleAttempts || false,
+    //   assignTo: quizDetails?.assignTo || "Everyone",
+    //   dueDate: quizDetails?.dueDate || "",
+    //   availableDate: quizDetails?.availableDate || "",
+    //   untilDate: quizDetails?.untilDate || "",
+    //   points: quizDetails?.points || 15,
+    //   attempts: quizDetails?.attempts || 0,
+    //   lock: quizDetails?.lock || false,
+    // });
+    navigate(`/Kambaz/Courses/${cid}/Quizzes`);
     console.log("Edit Cancelled");
+  };
+
+  const handleSavePublish = () => {
+    const updatedQuiz = {
+      ...details,
+      published: true,
+    };
+
+    if (quizDetails) {
+      // Updating an existing quiz
+      updateQuizz(updatedQuiz); // API call
+      dispatch(updateQuiz(updatedQuiz)); // Redux update
+      console.log("Quiz Published:", updatedQuiz);
+    } else {
+      // Creating a new quiz
+      const newQuiz = {
+        ...updatedQuiz,
+        _id: new Date().getTime().toString(), // create unique ID
+      };
+      courseClient.createQuizForCourse(cid, newQuiz);
+      // You can optionally dispatch(addQuiz(newQuiz)) if you have an addQuiz action
+      console.log("New Quiz Created & Published:", newQuiz);
+    }
+
+    navigate(`/Kambaz/Courses/${cid}/Quizzes`);
   };
 
   return (
@@ -506,7 +532,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
                   onChange={handleInputChange}
                 />
                 <label className="form-check-label" htmlFor="wd-chkbox-lock">
-                Lock Questions After Answering 
+                  Lock Questions After Answering
                 </label>
               </div>
               <div className="form-check mt-3 me-2 col-11 d-flex">
@@ -651,12 +677,18 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
           </div>
 
           {/* Save and Cancel Buttons */}
-          <div className="d-flex justify-content-end mt-4">
+          <div className="d-flex justify-content-end mt-3">
             <button className="btn btn-secondary me-2" onClick={handleCancel}>
               Cancel
             </button>
-            <button className="btn btn-danger" onClick={handleSave}>
+            <button className="btn btn-danger me-2" onClick={handleSave}>
               Save
+            </button>
+            <button
+              className="btn btn-warning me-2"
+              onClick={handleSavePublish}
+            >
+              Save & Publish
             </button>
           </div>
         </div>

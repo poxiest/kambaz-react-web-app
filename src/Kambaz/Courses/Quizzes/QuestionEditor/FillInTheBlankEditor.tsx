@@ -129,6 +129,7 @@ export default function FillInTheBlankEditor() {
   };
 
   const handleCancel = () => {
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
     console.log("Edit Cancelled");
   };
 

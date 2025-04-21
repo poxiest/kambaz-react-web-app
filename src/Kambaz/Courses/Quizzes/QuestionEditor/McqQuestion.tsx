@@ -147,6 +147,7 @@ export default function McqQuestion() {
   };
 
   const handleCancel = () => {
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
     console.log("Edit Cancelled");
   };
 

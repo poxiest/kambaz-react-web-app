@@ -104,6 +104,7 @@ export default function TrueFalseEditor() {
   };
 
   const handleCancel = () => {
+    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
     console.log("Edit Cancelled");
   };
 
