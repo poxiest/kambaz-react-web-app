@@ -13,7 +13,13 @@ export default function Labs() {
     <Provider store={store}>
     <div>
       <h1><u>CS5610-01 Spring 2025</u></h1>
-      <h1><u>Sri Vishaak Ramesh Babu</u></h1>
+      <h1><u>Team: Pyro</u></h1>
+      <br />
+      
+      <h4><u>Team Members: </u></h4> <br />
+      <h2><u>Sri Vishaak Ramesh Babu</u></h2>
+      <h2><u>Varun Rishwandh Sekar</u></h2>
+      <h2><u>Harikrishna Nagarajan</u></h2>
       <h1>Labs</h1>
       <TOC />
       <Routes>

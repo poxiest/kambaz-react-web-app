@@ -1,10 +1,14 @@
 Varun
+
+Done:
 True or false  - can't change the answers from true to false 
 Cancel button not working in questionCreation
 save button not working in quiz details screen (return back to quiz main screen)
 Clicking Save and Publish saves & publishes quiz and navigates to Quiz List screen
-radio buttons not working properly (visual) in quiz as student
 landing page for project
+
+Yet to do:
+radio buttons not working properly (visual) in quiz as student
 
 
 Hari 
