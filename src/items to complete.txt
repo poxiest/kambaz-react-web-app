@@ -19,7 +19,6 @@ Availability
 Closed - if current date is after quizzes until Date
 Available - if current date is between Available Date and Available Until Date
 Not available until <AVAILABLE DATE> - if current date is before the Available Date
-Under the quiz title display 
 
 
 - vishaak 

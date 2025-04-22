@@ -5,7 +5,7 @@ import { TiPencil } from "react-icons/ti";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import * as quizClient from "./client"; // Import the server client
-import {setSelectedQuiz } from "./reducerQuiz";
+import { setSelectedQuiz } from "./reducerQuiz";
 
 interface Attempt {
   _id: string;
@@ -96,7 +96,7 @@ export default function QuizDetails() {
   const fetchQuizDetails = async () => {
     try {
       const fetchedQuiz = await quizClient.findQuizzById(quizId as string); // Fetch quiz by ID
-      console.log(fetchedQuiz);
+      console.log("Fetched quizes : ", fetchedQuiz);
       dispatch(setSelectedQuiz(fetchedQuiz)); // Set the fetched quiz in Redux
     } catch (error) {
       console.error("Failed to fetch quiz details:", error);
@@ -180,7 +180,7 @@ export default function QuizDetails() {
         {(currentUser.role === "STUDENT" || currentUser.role === "TA") &&
         userAttempts.length > 0 ? (
           <>
-            {quiz?.attempts > 0 && ( // Display "Retest" only if remaining attempts are greater than 1
+            {userAttempts.length < quiz.attempts && ( // Display "Retest" only if remaining attempts are greater than 1
               <button
                 className="border p-1 pe-3 ps-3 me-2 rounded btn btn-danger"
                 onClick={handlePreviewClick}
@@ -295,9 +295,17 @@ export default function QuizDetails() {
             {quiz.multipleAttempts && (
               <>
                 <div className="col-6  d-flex justify-content-end">
-                  <strong>How Many Attempts:</strong>
+                  <strong>Total Attempts:</strong>
                 </div>
                 <div className="col-6">{quiz.attempts}</div>
+                {currentUser.role === "STUDENT" && (
+                  <>
+                    <div className="col-6  d-flex justify-content-end">
+                      <strong>Attempted:</strong>
+                    </div>
+                    <div className="col-6">{userAttempts.length}</div>
+                  </>
+                )}
               </>
             )}
 
