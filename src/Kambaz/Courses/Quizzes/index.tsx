@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdArrowDropDown, MdBlock } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 // import { quizzes } from "../../Database";
@@ -9,7 +8,7 @@ import * as quizClient from "./client";
 import * as coursesClient from "../client";
 import { setQuizzes, deleteQuiz, updateQuiz } from "./reducerQuiz";
 import { useDispatch, useSelector } from "react-redux";
-import { FaCheck } from "react-icons/fa";
+import {FaCheck, FaTrash} from "react-icons/fa";
 // import { ObjectId } from "mongodb";
 
 export default function Quiz() {
@@ -142,55 +141,69 @@ export default function Quiz() {
                     {currentUser.role === "FACULTY" &&
                       (quiz.published ? (
                         <FaCheck
-                          className="ms-3 me-4 mt-4 fs-3 text-success"
+                          className="ms-3 me-1 mt-4 fs-3 text-success"
                           onClick={() => togglePublish(quiz)}
                           title="Click to unpublish"
                           style={{ cursor: "pointer" }}
                         />
                       ) : (
                         <MdBlock
-                          className="ms-3 me-4 mt-4 fs-3 text-danger"
+                          className="ms-3 me-1 mt-4 fs-3 text-danger"
                           onClick={() => togglePublish(quiz)}
                           title="Click to publish"
                           style={{ cursor: "pointer" }}
                         />
                       ))}
                     {/* Quiz Details */}
-                    <div className="mt-2">
+                    <div className="mt-2 ms-3">
                       <Link
-                        className="wd-quiz-link text-black text-decoration-none"
-                        to={`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`}
+                          className="wd-quiz-link text-black text-decoration-none"
+                          to={`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`}
                       >
                         <b className="fs-4">{quiz.name}</b>
                       </Link>
                       <div className="ms-auto d-flex text-secondary">
                         <p>
-                          <b>{quiz.availability}</b>
+                          <b>
+                            {(() => {
+                              const currentDate = new Date();
+                              const availableDate = new Date(quiz.availableDate);
+                              const dueDate = new Date(quiz.dueDate);
+
+                              if (currentDate > dueDate) {
+                                return "Closed";
+                              } else if (currentDate >= availableDate && currentDate <= dueDate) {
+                                return "Available";
+                              } else {
+                                return `Not available until ${availableDate.toLocaleDateString()}`;
+                              }
+                            })()}
+                          </b>
                         </p>
                         <div
-                          className="vr me-2 ms-3"
-                          style={{
-                            borderLeft: "3px solid black",
-                            height: "1.5rem",
-                          }}
+                            className="vr me-2 ms-3"
+                            style={{
+                              borderLeft: "3px solid black",
+                              height: "1.5rem",
+                            }}
                         ></div>
                         <p>
                           <b>Due:</b> {quiz.dueDate}
                         </p>
                         <div
-                          className="vr me-2 ms-3"
-                          style={{
-                            borderLeft: "3px solid black",
-                            height: "1.5rem",
-                          }}
+                            className="vr me-2 ms-3"
+                            style={{
+                              borderLeft: "3px solid black",
+                              height: "1.5rem",
+                            }}
                         ></div>
                         <p>{quiz?.points} pts</p>
                         <div
-                          className="vr me-2 ms-3"
-                          style={{
-                            borderLeft: "3px solid black",
-                            height: "1.5rem",
-                          }}
+                            className="vr me-2 ms-3"
+                            style={{
+                              borderLeft: "3px solid black",
+                              height: "1.5rem",
+                            }}
                         ></div>
                         <p>
                           {/* {quiz.questions.length} */}
@@ -201,48 +214,17 @@ export default function Quiz() {
 
                     {/* Context Menu */}
                     {currentUser.role === "FACULTY" && (
-                      <div className="ms-auto">
-                        <div className="dropdown">
-                          <button
-                            className="btn border border-secondary bg-light p-2"
-                            type="button"
-                            id={`dropdownMenuButton-${quiz._id}`}
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <BsThreeDotsVertical />
-                          </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby={`dropdownMenuButton-${quiz._id}`}
-                          >
-                            <li>
-                              <button
-                                className="dropdown-item"
-                                onClick={() => handleEdit(quiz._id)}
-                              >
-                                Edit
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                className="dropdown-item"
-                                onClick={() => handleDelete(quiz._id)}
-                              >
-                                Delete
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                className="dropdown-item"
-                                onClick={() => togglePublish(quiz)}
-                              >
-                                {quiz.published ? "Unpublish" : "Publish"}
-                              </button>
-                            </li>
-                          </ul>
+                        <div className="ms-auto mt-4">
+                          {currentUser.role === "FACULTY" && (
+                              <FaTrash
+                                  className="text-danger"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleDelete(quiz._id);
+                                  }}
+                              />
+                          )}
                         </div>
-                      </div>
                     )}
                   </li>
                 ))
