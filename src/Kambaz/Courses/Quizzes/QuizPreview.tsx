@@ -479,7 +479,18 @@ export default function QuizPreview() {
 
       {/* Quiz Details */}
       <p>
-        <strong>Started:</strong> {new Date().toLocaleString()}
+        <strong>Started:</strong>{" "}
+        {userAttempts[0]?.timestamp
+          ? new Date(userAttempts[0].timestamp).toLocaleString("en-US", {
+              month: "short",
+              day: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              hour12: false,
+            })
+          : "Not started yet"}
       </p>
 
       <h5>
