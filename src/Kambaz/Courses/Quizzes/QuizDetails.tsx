@@ -329,7 +329,13 @@ export default function QuizDetails() {
             <div className="col-6  d-flex justify-content-end">
               <strong>Webcam Required:</strong>
             </div>
-            <div className="col-6">No</div>
+            <div className="col-6">{quiz.webcamRequired ? "Yes" : "No"}</div>
+
+            <div className="col-6  d-flex justify-content-end">
+              <strong>Access Code Required:</strong>
+            </div>
+            <div className="col-6">{quiz.needsAccessCode ? "Yes" : "No"}</div>
+
 
             <div className="col-6 d-flex justify-content-end">
               <strong>Lock Questions After Answering:</strong>
