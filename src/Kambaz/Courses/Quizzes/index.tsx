@@ -8,7 +8,7 @@ import * as quizClient from "./client";
 import * as coursesClient from "../client";
 import { setQuizzes, deleteQuiz, updateQuiz } from "./reducerQuiz";
 import { useDispatch, useSelector } from "react-redux";
-import {FaCheck, FaTrash} from "react-icons/fa";
+import { FaCheck, FaTrash } from "react-icons/fa";
 // import { ObjectId } from "mongodb";
 
 export default function Quiz() {
@@ -153,8 +153,8 @@ export default function Quiz() {
                     {/* Quiz Details */}
                     <div className="mt-2 ms-3">
                       <Link
-                          className="wd-quiz-link text-black text-decoration-none"
-                          to={`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`}
+                        className="wd-quiz-link text-black text-decoration-none"
+                        to={`/Kambaz/Courses/${cid}/Quizzes/${quiz._id}`}
                       >
                         <b className="fs-4">{quiz.name}</b>
                       </Link>
@@ -162,47 +162,59 @@ export default function Quiz() {
                         <p>
                           <b>
                             {(() => {
-                              const currentDate = new Date();
-                              const availableDate = new Date(quiz.availableDate);
-                              const dueDate = new Date(quiz.dueDate);
+                              const formatDateOnly = (date: Date) =>
+                                new Date(date.toISOString().split("T")[0]);
+
+                              const currentDate = formatDateOnly(new Date());
+                              const availableDate = formatDateOnly(
+                                new Date(quiz.availableDate)
+                              );
+                              const dueDate = formatDateOnly(
+                                new Date(quiz.dueDate)
+                              );
 
                               if (currentDate > dueDate) {
                                 return "Closed";
-                              } else if (currentDate >= availableDate && currentDate <= dueDate) {
+                              } else if (
+                                currentDate >= availableDate &&
+                                currentDate <= dueDate
+                              ) {
                                 return "Available";
                               } else {
-                                return `Not available until ${availableDate.toLocaleDateString()}`;
+                                return `Not available until ${
+                                  availableDate.toISOString().split("T")[0]
+                                }`;
                               }
                             })()}
                           </b>
                         </p>
                         <div
-                            className="vr me-2 ms-3"
-                            style={{
-                              borderLeft: "3px solid black",
-                              height: "1.5rem",
-                            }}
+                          className="vr me-2 ms-3"
+                          style={{
+                            borderLeft: "3px solid black",
+                            height: "1.5rem",
+                          }}
                         ></div>
                         <p>
                           <b>Due:</b> {quiz.dueDate}
                         </p>
                         <div
-                            className="vr me-2 ms-3"
-                            style={{
-                              borderLeft: "3px solid black",
-                              height: "1.5rem",
-                            }}
+                          className="vr me-2 ms-3"
+                          style={{
+                            borderLeft: "3px solid black",
+                            height: "1.5rem",
+                          }}
                         ></div>
                         <p>{quiz?.points} pts</p>
                         <div
-                            className="vr me-2 ms-3"
-                            style={{
-                              borderLeft: "3px solid black",
-                              height: "1.5rem",
-                            }}
+                          className="vr me-2 ms-3"
+                          style={{
+                            borderLeft: "3px solid black",
+                            height: "1.5rem",
+                          }}
                         ></div>
                         <p>
-                          {/* {quiz.questions.length} */}
+                          {quiz.questions.length + " "} 
                           Questions
                         </p>
                       </div>
@@ -210,17 +222,17 @@ export default function Quiz() {
 
                     {/* Context Menu */}
                     {currentUser.role === "FACULTY" && (
-                        <div className="ms-auto mt-4">
-                          {currentUser.role === "FACULTY" && (
-                              <FaTrash
-                                  className="text-danger"
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    handleDelete(quiz._id);
-                                  }}
-                              />
-                          )}
-                        </div>
+                      <div className="ms-auto mt-4">
+                        {currentUser.role === "FACULTY" && (
+                          <FaTrash
+                            className="text-danger"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleDelete(quiz._id);
+                            }}
+                          />
+                        )}
+                      </div>
                     )}
                   </li>
                 ))

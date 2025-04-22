@@ -13,6 +13,8 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log("quizDetails", quizDetails);
+  const today = new Date().toISOString().split("T")[0];
+
 
   // Local state for editing the quiz details
   const [details, setDetails] = useState({
@@ -26,9 +28,9 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
     time: quizDetails?.time || 20,
     multipleAttempts: quizDetails?.multipleAttempts || false,
     assignTo: quizDetails?.assignTo || "Everyone",
-    dueDate: quizDetails?.dueDate || "2024-11-01",
-    availableDate: quizDetails?.availableDate || "2024-10-01",
-    untilDate: quizDetails?.untilDate || "2024-12-01",
+    dueDate: quizDetails?.dueDate || today,
+    availableDate: quizDetails?.availableDate || today,
+    untilDate: quizDetails?.untilDate || today,
     points: quizDetails?.points || 15,
     attempts: quizDetails?.attempts || 0,
     lock: quizDetails?.lock || false,
@@ -43,6 +45,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
   // Function to determine availability
   const calculateAvailability = () => {
     const currentDate = new Date();
+    console.log(currentDate)
     const availableFrom = new Date(details.availableDate);
     const availableUntil = new Date(details.untilDate);
 
@@ -128,7 +131,7 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
       newErrors.dates = "Due date must be after the available from date";
       isValid = false;
     } else if (untilDate < dueDate) {
-      newErrors.dates = "Available until date must be before the due date";
+      newErrors.dates = "Available until date must be on or after the due date";
       isValid = false;
     } else {
       newErrors.dates = "";

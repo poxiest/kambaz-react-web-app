@@ -215,6 +215,7 @@ export default function QuizPreview() {
     }
 
     const handleAnswerChange = (questionId: string, selectedAnswer: string) => {
+      console.log("Reached")
       console.log(disable);
       if (disable) return;
       setQuesId(question._id);
