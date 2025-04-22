@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MdArrowDropDown, MdBlock } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 // import { quizzes } from "../../Database";
@@ -16,6 +17,8 @@ export default function Quiz() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer); // Get current user
+  const [questionCounts, setQuestionCounts] = useState<Record<string, number>>({});
+
 
   // const [quizzesList, setQuizzesList] = useState(quizzes);
 
@@ -62,12 +65,23 @@ export default function Quiz() {
         alert("Failed to delete quiz. Please try again.");
       }
     }
-    // setQuizzesList(
-    //   quizzesList.map((quiz: any) =>
-    //     quiz._id === quizId ? { ...quiz, published: !quiz.published } : quiz
-    //   )
-    // );
   };
+
+  useEffect(() => {
+    const fetchAllQuestionCounts = async () => {
+      const counts: Record<string, number> = {};
+      for (const quiz of quizzes) {
+        const questions = await quizClient.findQuestionsForQuiz(quiz._id);
+        counts[quiz._id] = Array.isArray(questions) ? questions.length : 0;
+      }
+      setQuestionCounts(counts);
+    };
+  
+    if (quizzes.length > 0) {
+      fetchAllQuestionCounts();
+    }
+  }, [quizzes]);
+  
 
   const openQuizDetails = async () => {
     // const response = await quizClient.getId();
@@ -213,13 +227,9 @@ export default function Quiz() {
                             height: "1.5rem",
                           }}
                         ></div>
-                        <p>
-                          {quiz.questions.length + " "} 
-                          Questions
-                        </p>
+                        <p>{questionCounts[quiz._id] ?? " "} Questions</p>
                       </div>
                     </div>
-
                     {/* Context Menu */}
                     {currentUser.role === "FACULTY" && (
                       <div className="ms-auto mt-4">

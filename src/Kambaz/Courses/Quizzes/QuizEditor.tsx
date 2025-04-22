@@ -111,15 +111,18 @@ export default function QuizEditor() {
         </li>
         <li className="nav-item">
           <a
-            className={`nav-link ${activeTab === "Questions" ? "active" : ""}`}
-            onClick={() => setActiveTab("Questions")}
+            className={`nav-link ${activeTab === "Questions" ? "active" : ""} ${
+              !quizId ? "text-muted" : ""
+            }`}
+            onClick={() => {
+              if (quizId) setActiveTab("Questions");
+              else alert("Save the quiz details first to add questions");
+            }}
           >
             Questions
           </a>
         </li>
       </ul>
-
-      {/* Conditional Rendering of Tabs Content */}
       <div className="mt-3">
         {activeTab === "Details" && <QuizDetail quizDetails={quiz} />}
         {activeTab === "Questions" && <QuizQuestions />}

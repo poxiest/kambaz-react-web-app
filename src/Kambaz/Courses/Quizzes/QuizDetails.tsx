@@ -204,16 +204,9 @@ export default function QuizDetails() {
           </button>
         )}
 
-        {/* For FACULTY or ADMIN */}
         {(currentUser.role === "FACULTY" || currentUser.role === "ADMIN") &&
           (userAttempts.length > 0 ? (
             <>
-              {/* <button
-                className="border p-1 pe-3 ps-3 me-2 rounded btn btn-danger"
-                onClick={handlePreviewClick}
-              >
-                Test
-              </button> */}
               <button
                 className="border p-1 pe-3 ps-3 me-2 rounded btn btn-danger"
                 onClick={handlePreviewAttempt}
@@ -230,12 +223,6 @@ export default function QuizDetails() {
             </>
           ) : (
             <>
-              {/* <button
-                className="border p-1 pe-3 ps-3 me-2 rounded btn btn-danger"
-                onClick={handlePreviewClick}
-              >
-                Test
-              </button> */}
               <button
                 className="border p-1 pe-4 ps-3 rounded btn btn-primary"
                 onClick={handleEditClick}

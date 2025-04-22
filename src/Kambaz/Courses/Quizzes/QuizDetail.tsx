@@ -42,6 +42,15 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
     dates: ""
   });
 
+  const hasChanges = () => {
+    if (!quizDetails) return true; // Always save for new quizzes
+  
+    const keysToCheck = Object.keys(details) as (keyof typeof details)[];
+    return keysToCheck.some((key) => {
+      return details[key] !== quizDetails[key];
+    });
+  };
+
   // Function to determine availability
   const calculateAvailability = () => {
     const currentDate = new Date();
@@ -145,6 +154,12 @@ const Details = ({ quizDetails }: { quizDetails: any }) => {
   const handleSave = () => {
     if (!validateQuiz()) {
       return; // Stop the save process if validation fails
+    }
+
+    if (!hasChanges()) {
+      console.log("No changes to save.");
+      navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+      return;
     }
 
     const updatedQuiz = {
