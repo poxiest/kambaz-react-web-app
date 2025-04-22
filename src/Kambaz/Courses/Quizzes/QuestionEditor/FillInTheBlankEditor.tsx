@@ -7,9 +7,10 @@ import { useNavigate, useParams } from "react-router";
 import { updateQuestion, addQuestion } from "./reducerQuestion"; // Redux actions
 import * as questionClient from "./client";
 import * as quizClient from "../client";
+import { v4 as uuidv4 } from "uuid";
 
 interface Answer {
-  id: number;
+  id: string;
   text: string;
 }
 
@@ -51,7 +52,7 @@ export default function FillInTheBlankEditor() {
         );
       } else {
         // Initialize default answers for a new question
-        setAnswers([{ id: 1, text: "" }]);
+        setAnswers([{ id: uuidv4(), text: "" }]);
       }
     } catch (error) {
       console.error("Failed to fetch question details:", error);
@@ -66,12 +67,12 @@ export default function FillInTheBlankEditor() {
   const addAnswer = () => {
     setAnswers((prevAnswers) => [
       ...prevAnswers,
-      { id: prevAnswers.length + 1, text: "" },
+      { id: uuidv4(), text: "" },
     ]);
   };
 
   // Update an answer's text
-  const updateAnswer = (id: number, value: string) => {
+  const updateAnswer = (id: string, value: string) => {
     setAnswers((prevAnswers) =>
       prevAnswers.map((answer) =>
         answer.id === id ? { ...answer, text: value } : answer
@@ -80,7 +81,7 @@ export default function FillInTheBlankEditor() {
   };
 
   // Remove an answer
-  const removeAnswer = (id: number) => {
+  const removeAnswer = (id: string) => {
     setAnswers((prevAnswers) =>
       prevAnswers.filter((answer) => answer.id !== id)
     );
@@ -179,15 +180,15 @@ export default function FillInTheBlankEditor() {
       {/* Answers Section */}
       <div className="mb-4">
         <label className="form-label fw-bold">Answers:</label>
-        {answers.map((answer) => (
+        {answers.map((answer, index) => (
           <div key={answer.id} className="d-flex align-items-center mb-2 p-2">
-            <span className="fw-bold me-2">Possible Answer:</span>
+            <span className="fw-bold me-2">Blank: {index+1}</span>
             <input
               type="text"
               className="form-control me-2"
               value={answer.text}
               onChange={(e) => updateAnswer(answer.id, e.target.value)}
-              placeholder={`Answer ${answer.id}`}
+              placeholder={`Answer ${index + 1}`}
             />
             <button
               className="btn btn-danger btn-sm"

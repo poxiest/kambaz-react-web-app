@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
@@ -6,9 +7,10 @@ import { useDispatch } from "react-redux";
 import { updateQuestion, addQuestion } from "./reducerQuestion"; // Import Redux actions
 import * as questionClient from "./client";
 import * as quizClient from "../client";
+import { v4 as uuidv4 } from "uuid";
 
 interface Option {
-  id: number;
+  id: string;
   answer: string;
   isAnswer: boolean;
 }
@@ -54,7 +56,7 @@ export default function McqQuestion() {
         );
       } else {
         // Initialize default options for a new question
-        setOptions([{ id: 1, answer: "", isAnswer: false }]);
+        setOptions([{ id: uuidv4(), answer: "", isAnswer: false }]);
       }
     } catch (error) {
       console.error("Failed to fetch question details:", error);
@@ -71,12 +73,12 @@ export default function McqQuestion() {
   const addAnswer = () => {
     setOptions((prevOptions) => [
       ...prevOptions,
-      { id: prevOptions.length + 1, answer: "", isAnswer: false },
+      { id: uuidv4(), answer: "", isAnswer: false },
     ]);
   };
 
   // Update an answer's text
-  const updateAnswer = (id: number, text: string) => {
+  const updateAnswer = (id: string, text: string) => {
     setOptions((prevOptions) =>
       prevOptions.map((option) =>
         option.id === id ? { ...option, answer: text } : option
@@ -85,7 +87,7 @@ export default function McqQuestion() {
   };
 
   // Mark an answer as correct
-  const markCorrect = (id: number) => {
+  const markCorrect = (id: string) => {
     setOptions((prevOptions) =>
       prevOptions.map((option) =>
         option.id === id
@@ -96,7 +98,7 @@ export default function McqQuestion() {
   };
 
   // Remove an answer
-  const removeAnswer = (id: number) => {
+  const removeAnswer = (id: string) => {
     setOptions((prevOptions) =>
       prevOptions.filter((option) => option.id !== id)
     );
@@ -197,7 +199,7 @@ export default function McqQuestion() {
       {/* Answers Section */}
       <div className="mb-4">
         <label className="form-label fw-bold">Answers:</label>
-        {options.map((option: any) => (
+        {options.map((option: any, index) => (
           <div
             key={option.id}
             className={`d-flex align-items-center mb-2 p-2 ${
@@ -221,18 +223,15 @@ export default function McqQuestion() {
               className="form-control me-2"
               value={option.answer}
               onChange={(e) => updateAnswer(option.id, e.target.value)}
-              placeholder={`Possible Answer ${option.id}`}
+              placeholder={`Possible Answer ${index + 1}`}
             />
 
-            {/* Remove Icon */}
-            {options.length > 2 && (
-              <button
-                className="btn btn-danger btn-sm"
-                onClick={() => removeAnswer(option.id)}
-              >
-                🗑️
-              </button>
-            )}
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => removeAnswer(option.id)}
+            >
+              🗑️
+            </button>
           </div>
         ))}
 
