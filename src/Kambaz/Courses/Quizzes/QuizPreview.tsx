@@ -210,10 +210,6 @@ export default function QuizPreview() {
         navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}`);
     };
 
-    const handleEditQuiz = () => {
-        console.log("Editing Quiz");
-    };
-
     // Current question to render
     const currentQuestion = quizQuestions[currentIndex];
     console.log(currentQuestion);
