@@ -36,10 +36,6 @@ export default function Quiz() {
 
   // console.log(quizzess);
 
-  const handleEdit = (quizId: any) => {
-    navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Edit`);
-  };
-
   const handleDelete = async (quizId: string) => {
     console.log(quizId);
     if (window.confirm("Are you sure you want to delete this quiz?")) {
